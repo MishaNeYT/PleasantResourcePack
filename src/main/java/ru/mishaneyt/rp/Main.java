@@ -1,27 +1,24 @@
 package ru.mishaneyt.rp;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.mishaneyt.rp.events.EventsListsner;
 
-import java.io.File;
-
-public class Main extends JavaPlugin {
+public final class Main extends JavaPlugin {
     private static Main instance;
 
     @Override
     public void onEnable() {
         instance = this;
+        saveDefaultConfig();
 
-        File config = new File(getDataFolder(), "config.yml");
-        if (!config.exists()) saveDefaultConfig();
-
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new EventsListsner(), this);
+        new Listener();
     }
 
-    public static Main getInstance() {
+    @Override
+    public void onDisable() {
+        getServer().getScheduler().cancelAllTasks();
+    }
+
+    public static synchronized Main getInstance() {
         return instance;
     }
 }

@@ -1,5 +1,6 @@
 name: PleasantResourcePack
-version: 1.0
-
 main: ru.mishaneyt.rp.Main
+version: 1.0.0
+
 authors: [ PleasantVKChannel ]
+api-version: 1.13
