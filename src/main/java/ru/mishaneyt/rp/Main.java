@@ -13,11 +13,6 @@ public final class Main extends JavaPlugin {
         new Listener();
     }
 
-    @Override
-    public void onDisable() {
-        getServer().getScheduler().cancelAllTasks();
-    }
-
     public static synchronized Main getInstance() {
         return instance;
     }
